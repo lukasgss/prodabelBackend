@@ -55,6 +55,7 @@ public class ErrorHandlerMiddleware
 				break;
 		}
 
+		Console.WriteLine(exception.Message);
 		context.Response.StatusCode = (int)statusCode;
 		await context.Response.WriteAsync(JsonSerializer.Serialize(new { statusCode, message }));
 	}
