@@ -1,5 +1,6 @@
 using Application.Common.Interfaces.Authentication;
 using Application.Common.Interfaces.Authorization;
+using Application.Common.Interfaces.Entities.Companies;
 using Application.Common.Interfaces.Entities.Users;
 using Application.Services.Authentication;
 using Application.Services.Authorization;
@@ -15,6 +16,7 @@ public static class DependencyInjection
 		services.AddScoped<IUserAuthorizationService, UserAuthorizationService>();
 		services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 		services.AddScoped<IUserService, UserService>();
+		services.AddScoped<ICompanyService, CompanyService>();
 
 		return services;
 	}

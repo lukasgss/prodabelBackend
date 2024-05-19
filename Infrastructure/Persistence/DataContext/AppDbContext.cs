@@ -10,4 +10,6 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole<int>, int>
 	public AppDbContext(DbContextOptions<AppDbContext> dbContextOptions) : base(dbContextOptions)
 	{
 	}
+
+	public DbSet<Company> Companies { get; set; } = null!;
 }
