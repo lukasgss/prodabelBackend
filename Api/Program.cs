@@ -5,6 +5,16 @@ using Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+	options.AddDefaultPolicy(policy =>
+	{
+		policy.AllowAnyOrigin()
+			.AllowAnyHeader()
+			.AllowAnyMethod();
+	});
+});
+
 builder.Services.ConfigureSwagger();
 
 builder.Services.ConfigureAuth(builder.Configuration);
@@ -15,6 +25,8 @@ builder.Services.AddApplication()
 builder.Services.AddControllers();
 
 var app = builder.Build();
+
+app.UseCors();
 
 app.UseMiddleware<ErrorHandlerMiddleware>();
 
