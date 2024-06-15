@@ -1,4 +1,5 @@
 using Application.Common.Interfaces.Authorization;
+using Application.Common.Interfaces.Entities.CollectionPoints.DTOs;
 using Application.Common.Interfaces.Entities.Companies;
 using Application.Common.Interfaces.Entities.Companies.DTOs;
 using Application.Common.Validations.CompanyValidations;
@@ -51,6 +52,13 @@ public class CompanyController : ControllerBase
 		int userId = _userAuthorizationService.GetUserIdFromJwtToken(User);
 
 		return await _companyService.CreateCompanyAsync(createCompanyRequest, userId);
+	}
+
+	[HttpPost("collection-spot")]
+	public async Task<ActionResult> CreateCollectionPoint(CreateCollectionPoint createCollectionPoint)
+	{
+		await _companyService.AssignCollectionPoint(createCollectionPoint);
+		return Created();
 	}
 
 	[Authorize, HttpPut("{companyId:int}")]

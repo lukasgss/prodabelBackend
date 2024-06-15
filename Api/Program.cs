@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Api.Extensions;
 using Application;
 using Application.Middlewares;
