@@ -12,7 +12,13 @@ public static class CompanyMappings
 			Name: company.Name,
 			Cnpj: company.Cnpj,
 			CepDeliveryInitialRange: company.CepDeliveryInitialRange,
-			CepDeliveryEndRange: company.CepDeliveryEndRange);
+			CepDeliveryEndRange: company.CepDeliveryEndRange,
+			Address: company.Address,
+			PhoneNumber: company.PhoneNumber,
+			Cep:company.Cep,
+			AddressNumber:company.AddressNumber,
+			CollectionLine:company.CollectionLine.ToString(),
+			CollectionPoints: company.CollectionPoints.ToCollectionPointResponses());
 	}
 
 	public static IEnumerable<CompanyResponse> ToCompanyResponse(this IEnumerable<Company> companies)

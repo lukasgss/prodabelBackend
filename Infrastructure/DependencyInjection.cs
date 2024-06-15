@@ -1,3 +1,4 @@
+using Application.Common.Interfaces.Entities.CollectionPoints;
 using Application.Common.Interfaces.Entities.Companies;
 using Application.Common.Interfaces.Entities.Users;
 using Infrastructure.Persistence.DataContext;
@@ -14,6 +15,7 @@ public static class DependencyInjection
 	{
 		services.AddScoped<IUserRepository, UserRepository>();
 		services.AddScoped<ICompanyRepository, CompanyRepository>();
+		services.AddScoped<ICollectionPointRepository, CollectionPointRepository>();
 
 		services.AddDbContext<AppDbContext>(options =>
 			options.UseNpgsql(configuration.GetConnectionString("DefaultConnection") ?? string.Empty));

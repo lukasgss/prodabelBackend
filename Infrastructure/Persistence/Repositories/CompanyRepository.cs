@@ -18,6 +18,7 @@ public class CompanyRepository : GenericRepository<Company>, ICompanyRepository
 	{
 		return await _dbContext.Companies
 			.Include(company => company.Owner)
+			.Include(company=>company.CollectionPoints)
 			.AsNoTracking()
 			.ToListAsync();
 	}
@@ -26,12 +27,14 @@ public class CompanyRepository : GenericRepository<Company>, ICompanyRepository
 	{
 		return await _dbContext.Companies
 			.Include(company => company.Owner)
+			.Include(company=>company.CollectionPoints)
 			.SingleOrDefaultAsync(company => company.Id == companyId);
 	}
 
 	public async Task<Company?> GetCompanyByCnpjAsync(string cnpj)
 	{
 		return await _dbContext.Companies
+			.Include(company=>company.CollectionPoints)
 			.AsNoTracking()
 			.SingleOrDefaultAsync(company => company.Cnpj == cnpj);
 	}
