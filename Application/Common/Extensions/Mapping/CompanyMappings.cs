@@ -21,6 +21,21 @@ public static class CompanyMappings
 			CollectionPoints: company.CollectionPoints.ToCollectionPointResponses());
 	}
 
+	public static CompanySimplifiedResponse ToCompanySimplifiedResponse(this Company company)
+	{
+		return new CompanySimplifiedResponse(
+			Name: company.Name,
+			Cnpj: company.Cnpj,
+			CepDeliveryInitialRange: company.CepDeliveryInitialRange,
+			CepDeliveryEndRange: company.CepDeliveryEndRange,
+			Address: company.Address,
+			PhoneNumber: company.PhoneNumber,
+			Cep: company.Cep,
+			AddressNumber: company.AddressNumber,
+			CollectionLine: company.CollectionLine.ToString());
+
+	}
+
 	public static IEnumerable<CompanyResponse> ToCompanyResponse(this IEnumerable<Company> companies)
 	{
 		return companies.Select(company => company.ToCompanyResponse());
