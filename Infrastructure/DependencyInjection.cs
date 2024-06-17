@@ -1,5 +1,6 @@
 using Application.Common.Interfaces.Entities.CollectionPoints;
 using Application.Common.Interfaces.Entities.Companies;
+using Application.Common.Interfaces.Entities.ContactMessages;
 using Application.Common.Interfaces.Entities.Users;
 using Infrastructure.Persistence.DataContext;
 using Infrastructure.Persistence.Repositories;
@@ -16,6 +17,7 @@ public static class DependencyInjection
 		services.AddScoped<IUserRepository, UserRepository>();
 		services.AddScoped<ICompanyRepository, CompanyRepository>();
 		services.AddScoped<ICollectionPointRepository, CollectionPointRepository>();
+		services.AddScoped<IContactMessageRepository, ContactMessageRepository>();
 
 		services.AddDbContext<AppDbContext>(options =>
 			options.UseNpgsql(configuration.GetConnectionString("DefaultConnection") ?? string.Empty));

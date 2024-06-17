@@ -14,6 +14,7 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole<int>, int>
 
 	public DbSet<Company> Companies { get; set; } = null!;
 	public DbSet<CollectionPoint> CollectionPoints { get; set; } = null!;
+	public DbSet<ContactMessage> ContactMessages { get; set; } = null!;
     
 	protected override void OnModelCreating(ModelBuilder builder)
 	{
