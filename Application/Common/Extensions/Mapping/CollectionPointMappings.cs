@@ -14,6 +14,23 @@ public static class CollectionPointMappings
             collectionPoint.Number);
     }
 
+    public static CollectionPointWithCompanyResponse ToCollectionPointWithCompanyResponse(
+        this CollectionPoint collectionPoint)
+    {
+        return new CollectionPointWithCompanyResponse(collectionPoint.Id,
+            collectionPoint.Company.ToCompanySimplifiedResponse(),
+            collectionPoint.Cep,
+            collectionPoint.Address,
+            collectionPoint.Number);
+    }
+
+    public static List<CollectionPointWithCompanyResponse> ToCollectionPointWithCompanyResponses(
+        this IEnumerable<CollectionPoint> collectionPoints)
+    {
+        return collectionPoints.Select(collectionPoint => collectionPoint.ToCollectionPointWithCompanyResponse())
+            .ToList();
+    }
+
     public static List<CollectionPointResponse> ToCollectionPointResponses(
         this IEnumerable<CollectionPoint> collectionPoints)
     {
