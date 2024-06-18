@@ -21,5 +21,7 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole<int>, int>
 		base.OnModelCreating(builder);
 
 		builder.Entity<User>().HasData(SeedUser.Seed());
+		builder.Entity<Company>().HasData(SeedCompany.Seed());
+		builder.Entity<CollectionPoint>().HasData(SeedCollectionPoints.Seed());
 	}
 }
